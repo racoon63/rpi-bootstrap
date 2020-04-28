@@ -1,5 +1,5 @@
 # Usage:
-# ansible-playbook -i "YOUR_IP," -u pi -e 'ansible_python_interpreter=/usr/bin/python3' bootstrap.yml
+# ansible-playbook -i "YOUR_IP," -u pi bootstrap.yml
 ---
 - name: Bootstrap raspberry pi with your given settings.
   hosts: all

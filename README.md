@@ -15,7 +15,7 @@ Tested on the following OS:
 ## Usage
 
 ```bash
-ansible-playbook -i "YOUR_IP," -u pi -e 'ansible_python_interpreter=/usr/bin/python3' bootstrap.yml
+ansible-playbook -i "YOUR_IP," -u pi bootstrap.yml
 ```
 
 ## ToDo
