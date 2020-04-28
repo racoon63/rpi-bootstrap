@@ -1,0 +1,35 @@
+# Usage:
+# ansible-playbook -i "YOUR_IP," -u pi -e 'ansible_python_interpreter=/usr/bin/python3' bootstrap.yml
+---
+- name: Bootstrap raspberry pi with your given settings.
+  hosts: all
+  gather_facts: no
+  become: yes
+  # vars_prompt:
+  #   - name: PI_PASSWD
+  #     prompt: "Enter new password for user 'pi'"
+  #     private: yes
+  #     confirm: yes
+  #     # encrypt: "sha512_crypt"
+  #     # salt_size: 7
+  #   - name: HOSTNAME
+  #     prompt: "Enter new hostname for your pi"
+  #     private: no
+  #   - name: STATIC_IP
+  #     prompt: "Enter static ip for your Raspberry Pi"
+  #     private: no
+  #   - name: NAMESERVER
+  #     prompt: "Enter nameserver ip addresses separated by spaces [e.g. 1.1.1.1 1.0.0.1]"
+  #     private: no
+  #   - name: GW_IP
+  #     prompt: "Enter ip address of your gateway"
+  #     private: no
+  roles:
+    - packages
+    - users
+    - ssh
+    - networking
+  tasks:
+    - hostname:
+        name: '{{ HOSTNAME }}'
+        use: systemd
